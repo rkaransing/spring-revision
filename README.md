@@ -1,0 +1,112 @@
+# Spring
+- What is spring container?
+  - Manages spring beans and their lifecycle.
+  - Once you create java classes and once you create the configuration, the IOC container creates the runtime system for us.
+  - IOC container is one who creates spring context and manage the beans for us.
+    1. Bean Factory: Basic Spring container
+    2. Application Context: Advanced Spring container with enterprise-specific features.
+- Difference between POJO, Java Bean, Spring Bean
+  - POJO
+    - Every java object is POJO.
+  - Java Bean
+    - Compulsory no arg constructor should be there -> which is by default available there.
+    - There should be getters and setters.
+    - Class should be Serializable.
+    - 
+  - Spring Bean
+    - Any Java object that is managed by Spring container is known as Spring beans.
+- Different Types of dependency injection
+  - Field Injection
+    - @Autowired does field injection.
+  - Setter Injection.
+    - Make the setters annotated with @Autowired
+  - Constructor injection.
+  - Spring team recommends constructor based injection.
+- Some important Terminologies
+  - @Component - An instance (spring bean) of that class will be managed by Spring framework.
+  - Dependency:
+    - Some bean dependent on some other classes/its beans.
+  - @ComponentScan
+    - How spring will find out component classes.
+    - It scans packages.
+  - Dependency Injection:
+    - Identify the beans and their dependencies and wire them together(provides IOC).
+  - Spring beans 
+    - Any object that is managed by Spring framework is known as Spring beans.
+  - IoC container: Manages the lifecycle of beans and dependency.
+    - There are two types of IoC container, Application Context and Bean factor.
+    - Recommended is Application context (which is complex) and bean factory is rarely used.
+    - 
+  - Autowiring:
+    - Process of wiring in dependencies for Spring bean is called as Autowiring.
+- Difference between @Component & @Bean
+  - Places used:
+    - @Compoenent -> Used at class level to create a bean.
+      - Easy as just add one annotation on class.
+    - @Bean -> Used on methods to create bean.
+      - You need to write all the code for bean creation.
+  - Autowiring:
+    - @Component -> Field, Setter or Constructor injection.
+    - @Bean -> Method call or Method parameters.
+  - Who creates the beans
+    - @Component -> Spring creates the bean.
+    - @Bean -> You need to write the bean creation code.
+  - Finally, which one is recommended:
+    - Instantiating beans for your own application code then go for @Component
+    - For custom business logic or for third party libraries go for @Bean
+### With Spring Framework:
+  - Instead of focusing on object, their dependencies and wiring spring frameworks helps us to focus on business logic of your application.
+  - Spring framework manages the lifecycle of objects.
+    - And For this just 
+      - Mark the components using @Component annotation.
+      - Mark the  dependencies using @Autowired annotation.
+      - Allow spring framework to do the magic.
+  - @Lazy
+    - Used to lazily initialise the beans (at its first use).
+    - By default, its eager initialisation, because we can catch errors if any at the time of application startup itself.
+  - Spring Bean Scopes
+    - Scopes applicable only for web-aware Spring application context.
+      - Session scope -> Object instance per user session.
+      - Request Scope -> Object instance for every HTTP request.
+      - Application Scope -> Object for whole application scope.
+      - Websocket scope.
+    - SCOPE_PROTOTYPE
+      - Returns new instance of the bean every new time.
+    - SCOPE_SINGLETON
+      - This is by default.
+      - Returns only once created class always.
+    - Java Singleton vs Spring Singleton
+  - Spring Stereotype Annotations:
+    - @Component
+      - Generic annotation applicable for any class.
+      - This is the base for all stereotype annotations.
+      - Specializations of @Component:
+        - @Service:
+          - Class with business logic
+        - @Controller:
+          - Used to define controllers in our web applications and in our REST api.
+        - @Repository:
+          - Used when the class is talking to database.
+    - It's always recommended to use the most specific annotation because
+      - Suppose if it is @Repository then Spring automatically wires the JDBC Exception translation features.
+
+### World before Spring Boot
+  - Manage frameworks and versions.
+  - Configure Dispatcher servlet for Spring MVC
+  - Additional Spring configurations.
+  - Some non-functional requirements.
+    - Logging.
+    - Error handling.
+    - Monitoring.
+  - Most imp goal of Spring Boot:
+    - Help to build PRODUCTION READY applications quickly.
+      - Quickly:
+        - Spring Initializer.
+        - Spring boot starter project.
+        - Spring boot Auto Configuration.
+        - Spring boot Dev-tools.
+      - Production Ready:
+        - Logging -> Like for diff Env.
+        - Diff configs for environment.
+        - Monitoring (Actuator)
+        - 
